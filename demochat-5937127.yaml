@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-08-09T22:48:23Z
+  generation: 1
+  labels:
+    app: demochat
+    version: 5937127
+  name: demochat-5937127
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demochat
+      io.codefresh.auto-generated: ffa5c6bc-31fc-46e9-872c-abb5f64ce491
+      io.codefresh.generated-at: "1533854903559"
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        forceRedeployUniqId: 5937127
+      creationTimestamp: null
+      labels:
+        app: demochat
+        io.codefresh.auto-generated: ffa5c6bc-31fc-46e9-872c-abb5f64ce491
+        io.codefresh.generated-at: "1533854903559"
+    spec:
+      containers:
+      - image: r.cfcr.io/douglax/douglax/demochat:5937127
+        imagePullPolicy: Always
+        name: demochat
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: codefresh-generated-r.cfcr.io-cfcr-default
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 40
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: 2018-08-09T22:49:00Z
+    lastUpdateTime: 2018-08-09T22:49:00Z
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

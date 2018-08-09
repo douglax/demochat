@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demochat-5937127
+spec:
+  replicas: 2
+  template:
+    metadata:
+      annotations:
+        forceRedeployUniqId: "5937127"
+      labels:
+        name: demochat
+        version: "5937127"
+    spec:
+      containers:
+      - name: demochat
+        image:  'r.cfcr.io/douglax/douglax/demochat:5937127'
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 5000
+          protocol: TCP
+      imagePullSecrets:
+        - name: 'codefresh-generated-r.cfcr.io-cfcr-default'
